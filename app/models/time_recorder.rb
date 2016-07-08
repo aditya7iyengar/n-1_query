@@ -3,8 +3,8 @@ class TimeRecorder
   end
 
   def benchmark(options={})
-    start_time = (Time.now * 1000).to_i
-    puts "start time: #{start_time} ms"
+    start_time = Time.now
+    puts "start time: #{start_time}"
     puts "--------------------------------------------------------------"
     puts "--------------------------------------------------------------"
     puts "--------------------------------------------------------------"
@@ -16,19 +16,20 @@ class TimeRecorder
       raise e
     ensure
 
-    puts "--------------------------------------------------------------"
-    puts "--------------------------------------------------------------"
-    puts "--------------------------------------------------------------"
+      puts "--------------------------------------------------------------"
+      puts "--------------------------------------------------------------"
+      puts "--------------------------------------------------------------"
 
-    end_time = (Time.now * 1000).to_i
-    puts "end time: #{end_time} ms"
+      end_time = Time.now
+      puts "end time: #{end_time} ms"
 
-    if error.present?
-      puts "error: #{error}"
+      if error.present?
+        puts "error: #{error}"
+      end
+
+      total_time = ((end_time - start_time) * 1000).to_i
+
+      puts "Total time: #{total_time} ms"
     end
-
-    total_time = ((end_time - start_time) * 1000).to_i
-
-    puts "Total time: #{total_time} ms"
   end
 end
