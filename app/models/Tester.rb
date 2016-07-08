@@ -33,10 +33,11 @@ class Tester
 
   # Tester.select_client_names_and_zip_codes
   # Tester.select_client_names_and_zip_codes_improved
+  # ActiveRecord::Base.logger = nil
   # Tester.benchmark_client_names_and_zip_codes
   # Tester.benchmark_client_names_and_zip_codes_improved
   # Tester.populator(1000, 1000)
-  # ActiveRecord::Base.logger = nil
+
 
   def self.populator(client_max=100, address_record_max=100)
     client_index = 0
