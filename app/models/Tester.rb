@@ -1,5 +1,5 @@
 class Tester
-  def self.select_client_names_and_zip_codes(limit)
+  def self.select_client_names_and_zip_codes(limit=999)
     clients = Client.limit(limit)
 
     clients.each do |client|
@@ -15,7 +15,7 @@ class Tester
     end
   end
 
-  def self.select_client_names_and_zip_codes_improved(limit)
+  def self.select_client_names_and_zip_codes_improved(limit=999)
     clients = Client.includes(:address_record).limit(limit)
 
     clients.each do |client|
