@@ -1,5 +1,5 @@
 class Tester
-  def self.print_client_names_and_zip_codes(limit)
+  def self.select_client_names_and_zip_codes(limit)
     clients = Client.limit(limit)
 
     clients.each do |client|
@@ -11,11 +11,11 @@ class Tester
   def self.benchmark_client_names_and_zip_codes(limit=999)
     time_recorder = TimeRecorder.new
     time_recorder.benchmark do
-      print_client_names_and_zip_codes(limit)
+      select_client_names_and_zip_codes(limit)
     end
   end
 
-  def self.print_client_names_and_zip_codes_improved(limit)
+  def self.select_client_names_and_zip_codes_improved(limit)
     clients = Client.includes(:address_record).limit(limit)
 
     clients.each do |client|
@@ -27,10 +27,12 @@ class Tester
   def self.benchmark_client_names_and_zip_codes_improved(limit=999)
     time_recorder = TimeRecorder.new
     time_recorder.benchmark do
-      print_client_names_and_zip_codes_improved(limit)
+      select_client_names_and_zip_codes_improved(limit)
     end
   end
 
+  # Tester.select_client_names_and_zip_codes
+  # Tester.select_client_names_and_zip_codes_improved
   # Tester.benchmark_client_names_and_zip_codes
   # Tester.benchmark_client_names_and_zip_codes_improved
   # Tester.populator(1000, 1000)
